@@ -2,10 +2,8 @@ import {
   Card,
   CardLoader,
   CardTitle,
-  Checkbox,
   Form,
   FormField,
-  FormFieldSecret,
   TeamConfigurationSurface,
 } from "@netlify/sdk/ui/react/components";
 import { useNetlifySDK } from "@netlify/sdk/ui/react";
@@ -31,40 +29,21 @@ export const TeamConfiguration = () => {
     <TeamConfigurationSurface>
       <Card>
         <img src={logoImg} />
-        <CardTitle>Example Section for {sdk.extension.name}</CardTitle>
+        <CardTitle>Team Configuration for {sdk.extension.name}</CardTitle>
         <Form
           defaultValues={
             teamSettingsQuery.data ?? {
-              exampleString: "",
-              exampleSecret: "",
-              exampleBoolean: false,
-              exampleNumber: 123,
+              dartsassVersion: "1.97.3",
             }
           }
           schema={TeamConfigSchema}
           onSubmit={teamSettingsMutation.mutateAsync}
         >
           <FormField
-            name="exampleString"
+            name="dartsassVersion"
             type="text"
-            label="Example String"
-            helpText="This is an example string"
-          />
-          <FormField
-            name="exampleNumber"
-            type="number"
-            label="Example Number"
-            helpText="This is an example number"
-          />
-          <FormFieldSecret
-            name="exampleSecret"
-            label="Example Secret"
-            helpText="This is an example secret"
-          />
-          <Checkbox
-            name="exampleBoolean"
-            label="Example Boolean"
-            helpText="This is an example boolean"
+            label="Dart Sass Version"
+            helpText="Semantic version of the Dart Sass SDK to install, excluding 'v' prefix."
           />
         </Form>
       </Card>
