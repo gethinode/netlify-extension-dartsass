@@ -1,7 +1,7 @@
 config:
   slug: bv2wdvol-dartsass
   name: netlify-extension-dartsass
-  ui:
-    surfaces:
+  # ui:
+  #   surfaces:
       # - extension-team-configuration
       # - extension-top-level-site-configuration
