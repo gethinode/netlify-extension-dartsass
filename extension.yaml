@@ -1,0 +1,7 @@
+config:
+  slug: netlify-extension-dartsass
+  name: netlify-extension-dartsass
+  ui:
+    surfaces:
+      - extension-team-configuration
+      - extension-top-level-site-configuration
