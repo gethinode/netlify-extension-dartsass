@@ -47,8 +47,7 @@ src/
 │   ├── router.ts        # tRPC router with teamSettings and buildEventHandler procedures
 │   └── trpc.ts          # tRPC initialization with Netlify SDK context
 ├── schema/              # Zod schemas for configuration validation
-│   ├── team-config.ts   # Team-level configuration schema
-│   └── site-config.ts   # Site-level configuration schema
+│   └── team-config.ts   # Team-level configuration schema
 ├── ui/                  # React frontend (built with Vite)
 │   ├── index.tsx        # UI entry point
 │   ├── App.tsx          # Main app with tRPC provider and surface routing
