@@ -20,9 +20,9 @@ extension.addBuildEventHandler("onPreBuild", async ({ netlifyConfig }) => {
   // See https://gohugo.io/host-and-deploy/host-on-netlify/ for more information
   let newCommand = `
     curl -sLJO "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" && \
-    tar -C "${HOME}/.local" -xf "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" && \
+     tar -xf dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
     rm "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" && \
-    export PATH="${HOME}/.local/dart-sass:${PATH}"`
+    export PATH=/opt/build/repo/dart-sass:$PATH`
  
 
   // Run the installation command before the build command
