@@ -6,7 +6,7 @@ import { NetlifyExtension } from "@netlify/sdk";
 
 const extension = new NetlifyExtension();
 // const extension = new NetlifyExtension<SiteConfig, TeamConfig>();
-extension.addBuildEventHandler("onPreBuild", ({ netlifyConfig }) => {
+extension.addBuildEventHandler("onPreBuild", async ({ netlifyConfig }) => {
   // If the build event handler is not enabled, return early
   if (!process.env["NETLIFY_EXTENSION_DARTSASS_ENABLED"]) {
     return;
