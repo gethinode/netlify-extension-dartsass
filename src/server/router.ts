@@ -86,13 +86,45 @@ export const appRouter = router({
       }
 
       try {
-        await client.patchEnvironmentVariable({
+        // Get existing variables to check if it already exists
+        const envVars = await client.getEnvironmentVariables({
           accountId: teamId,
           siteId,
-          key: BUILD_EVENT_HANDLER_ENABLED_ENV_VAR,
-          context: "all",
-          value: "true",
         });
+
+        const existingVar = envVars.find(
+          (v) => v.key === BUILD_EVENT_HANDLER_ENABLED_ENV_VAR
+        );
+
+        if (existingVar) {
+          // Variable exists, update it
+          await client.updateEnvironmentVariable({
+            accountId: teamId,
+            siteId,
+            key: BUILD_EVENT_HANDLER_ENABLED_ENV_VAR,
+            values: [
+              {
+                context: "all",
+                value: "true",
+              },
+            ],
+            scopes: existingVar.scopes,
+          });
+        } else {
+          // Variable doesn't exist, create it
+          await client.createEnvironmentVariable({
+            accountId: teamId,
+            siteId,
+            key: BUILD_EVENT_HANDLER_ENABLED_ENV_VAR,
+            values: [
+              {
+                context: "all",
+                value: "true",
+              },
+            ],
+            scopes: ["builds", "functions"],
+          });
+        }
 
         console.log(
           `Build event handler enabled for team ${teamId}, site ${siteId}`
@@ -104,9 +136,8 @@ export const appRouter = router({
         };
       } catch (error) {
         console.error(
-          `Failed to enable build event handler: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }`
+          `Failed to enable build event handler:`,
+          error
         );
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
