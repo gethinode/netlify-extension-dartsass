@@ -1,6 +1,9 @@
 config:
   slug: bv2wdvol-dartsass
   name: netlify-extension-dartsass
+  scopes:
+    env: ["read", "write"]
+    site: ["read"]
   ui:
     surfaces:
       - extension-team-configuration
