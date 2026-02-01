@@ -3,5 +3,5 @@ config:
   name: netlify-extension-dartsass
   ui:
     surfaces:
-      - extension-team-configuration
-      - extension-top-level-site-configuration
+      # - extension-team-configuration
+      # - extension-top-level-site-configuration

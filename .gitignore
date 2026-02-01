@@ -2,3 +2,4 @@
 .ntli
 node_modules
 .netlify
+deno.lock
