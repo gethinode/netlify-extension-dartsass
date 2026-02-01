@@ -108,7 +108,7 @@ export const appRouter = router({
                 value: "true",
               },
             ],
-            scopes: existingVar.scopes,
+            scopes: [existingVar.scopes],
           });
         } else {
           // Variable doesn't exist, create it
@@ -133,15 +133,18 @@ export const appRouter = router({
         return {
           success: true,
           message: "Build event handler enabled successfully",
+          buildTime: "2026-02-01T14:30:00Z", // Version marker
         };
       } catch (error) {
         console.error(
           `Failed to enable build event handler:`,
           error
         );
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        const errorDetails = JSON.stringify(error, null, 2);
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to enable build event handler",
+          message: `Failed to enable build event handler: ${errorMessage}. Details: ${errorDetails}`,
           cause: error,
         });
       }
