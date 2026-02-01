@@ -1,10 +1,11 @@
 // Documentation: https://sdk.netlify.com/docs
 
 import { NetlifyExtension } from "@netlify/sdk";
-import type { TeamConfig } from "./schema/team-config.js";
-import type { SiteConfig } from "./schema/site-config.js";
+// import type { TeamConfig } from "./schema/team-config.js";
+// import type { SiteConfig } from "./schema/site-config.js";
 
-const extension = new NetlifyExtension<SiteConfig, TeamConfig>();
+const extension = new NetlifyExtension();
+// const extension = new NetlifyExtension<SiteConfig, TeamConfig>();
 extension.addBuildEventHandler("onPreBuild", ({ netlifyConfig }) => {
   // If the build event handler is not enabled, return early
   if (!process.env["NETLIFY_EXTENSION_DARTSASS_ENABLED"]) {
