@@ -64,8 +64,16 @@ export const SiteConfiguration = () => {
       </Card>
       {buildEventHandlerEnabledForSite.data?.enabled && (
         <Card>
-          <CardTitle>Example Section for {sdk.extension.name}</CardTitle>
-          <p>This is an example site configuration.</p>
+          <CardTitle>Installation notes for {sdk.extension.name}</CardTitle>
+          <p>
+            Dart Sass has now been enabled for your site. Update your `netlify.toml` with the following configuration to install a specific Dart Sass version:
+            <pre>
+              <code>
+              [build.environment]
+              DART_SASS_VERSION = "1.97.3"
+              </code>
+            </pre>
+          </p>
         </Card>
       )}
     </SiteConfigurationSurface>

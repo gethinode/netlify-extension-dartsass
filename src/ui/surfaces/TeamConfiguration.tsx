@@ -33,7 +33,7 @@ export const TeamConfiguration = () => {
         <Form
           defaultValues={
             teamSettingsQuery.data ?? {
-              dartsassVersion: "1.97.3",
+              dartsassVersion: "1.97.0",
             }
           }
           schema={TeamConfigSchema}
