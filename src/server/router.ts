@@ -86,10 +86,11 @@ export const appRouter = router({
       }
 
       try {
-        await client.createOrUpdateVariable({
+        await client.patchEnvironmentVariable({
           accountId: teamId,
           siteId,
           key: BUILD_EVENT_HANDLER_ENABLED_ENV_VAR,
+          context: "all",
           value: "true",
         });
 
